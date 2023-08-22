@@ -8,19 +8,22 @@ import Sun from '../../assets/icons/Sun';
 import { AppIcon } from '../../assets/icons/AppIcon';
 import { Moon } from '../../assets/icons';
 import { Star } from '../../assets/icons/Star';
+import { useTheme } from '../../context/ThemeContext';
 
 const windowWidth = Dimensions.get("screen").width// Use a largura da tela real aqui
 const fairyWidth = 50;
 
 const Toggle = () => {
     const [touch, setTouch] = useState(true);
+    const { isDarkMode, toggleDarkMode } = useTheme()
+
     const animatedValue = useRef(new Animated.Value(touch ? 0.01 : 0.05)).current; // Inicializa a animação
     const animatedCloud = useRef(new Animated.Value(touch ? 0.09 : 0.05)).current; // Inicializa a animação
     const animatedStar = useRef(new Animated.Value(touch ? 0.09 : 0.05)).current; // Inicializa a anim
 
     const onPressed = (): void => {
         setTouch(!touch);
-        console.log("🚀 ~ file: index.tsx:21 ~ onPressed ~ touch:", touch)
+        toggleDarkMode()
 
         // Animação para a posição final
         Animated.timing(animatedValue, {
@@ -63,7 +66,8 @@ const Toggle = () => {
         } else {
             return {
                 backgroundColor: "black",
-                opacity: 0.8
+                opacity: 0.8,
+                shadowColor: "white",
             }
         }
     }
