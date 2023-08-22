@@ -3,19 +3,19 @@ import { color } from "../../assets/colors";
 
 export const styles = StyleSheet.create({
     toggle: {
+        overflow: "hidden",
         position: 'relative',
-        width: 300,
+        width: 200,
         zIndex: 1,
         flexDirection: 'row',
         height: 80,
         borderRadius: 50,
-        borderWidth: 1,
-        borderColor: color.skyBorder,
-        elevation: 5,
-        shadowColor: color.skyBorder,
+        borderWidth: 5,
+        // borderColor: color.skyBorder,
+        borderColor: 'rgba(0, 0, 0, 0.01)',
         alignItems: "center",
         justifyContent: "center",
-
+        elevation: 10,
     },
     containerSunSky: {
         alignItems: "center",
@@ -26,14 +26,15 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         flexDirection: "row",
         elevation: 5,
-        top: -35,
-        marginHorizontal: 5
+        top: -30,
+        // marginHorizontal: 5
     },
     star: {
         flexDirection: "row",
     },
 
     nocturneSky: {
+
         position: 'absolute',
         flexDirection: "row",
         height: 100,
@@ -41,11 +42,11 @@ export const styles = StyleSheet.create({
         backgroundColor: 'transparent',
         alignItems: "center",
         justifyContent: "center",
-        top: 10,
+        top: -40
     },
     moon: {
         position: 'absolute',
-        top: -35,
+        top: -30,
         flexDirection: "row",
         elevation: 5,
         marginHorizontal: 5,
@@ -55,8 +56,8 @@ export const styles = StyleSheet.create({
         zIndex: -1,
         alignItems: "center",
         justifyContent: "center",
-        left: 320,
-        top: 15,
+        left: 180,
+        top: 10,
     },
     cloudBack: {
         position: "absolute",
@@ -70,23 +71,23 @@ export const styles = StyleSheet.create({
     },
     eclipse1: {
         position: 'absolute',
-        width: 300,
-        height: 90,
+        width: 175,
+        height: 135,
         borderRadius: 100,
         backgroundColor: color.white,
         opacity: 0.3
     },
     eclipse2: {
         position: 'absolute',
-        width: 200,
-        height: 90,
+        width: 135,
+        height: 115,
         borderRadius: 100,
         backgroundColor: color.white,
         opacity: 0.1
     },
     eclipse3: {
         position: 'absolute',
-        width: 100,
+        width: 90,
         height: 90,
         borderRadius: 100,
         backgroundColor: color.white,

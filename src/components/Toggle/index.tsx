@@ -41,6 +41,18 @@ const Toggle = () => {
                 useNativeDriver: false,
             }).start();
         });
+        Animated.timing(animatedStar, {
+            toValue: touch ? 1 : 0,
+            duration: 500, // Duração da animação em milissegundos
+            useNativeDriver: false,
+        }).start(() => {
+            // Animação de retorno ligeiro
+            Animated.timing(animatedStar, {
+                toValue: touch ? 0.9 : 0.1, // Valor intermediário para criar o efeito de "rebote"
+                duration: 250, // Duração da animação de retorno
+                useNativeDriver: false,
+            }).start();
+        });
     };
 
     const changeBackground = (): object => {
@@ -59,17 +71,17 @@ const Toggle = () => {
 
     const ballPosition = animatedValue.interpolate({
         inputRange: [0.57, 1],
-        outputRange: [17, 108], // Substitua o valor conforme necessário
+        outputRange: [17, touch ? 71 : 58], // Substitua o valor conforme necessário
     });
 
     const skyPosition = animatedCloud.interpolate({
-        inputRange: [0, 10],
+        inputRange: [0, 4],
         outputRange: [10, 600], // Substitua o valor conforme necessário
     })
 
     const starPosition = animatedStar.interpolate({
         inputRange: [0, 10],
-        outputRange: [6, 600],
+        outputRange: [0, 600],
     })
 
     return (
@@ -81,20 +93,20 @@ const Toggle = () => {
                     <View style={styles.eclipse3} />
                     {touch ?
                         <View style={styles.sun}>
-                            <Sun width={'75'} height={'75'} />
+                            <Sun width={'65'} height={'65'} />
                         </View>
                         :
                         <View style={styles.moon}>
-                            <Moon width={'75'} height={'75'} />
+                            <Moon width={'65'} height={'65'} />
                         </View>}
                 </View>
             </Animated.View>
             {touch && <Animated.View style={[styles.sunsetSky, { transform: [{ translateY: skyPosition }] }]}>
                 <View style={styles.cloudBack}>
-                    <CloudBack color={color.cloudBack} width={'350'} height={'130'} />
+                    <CloudBack color={color.cloudBack} width={'175'} height={'200'} />
                 </View>
                 <View style={styles.cloudFront}>
-                    <CloudFront color={color.cloudFront} width={'350'} height={'130'} />
+                    <CloudFront color={color.cloudFront} width={'175'} height={'200'} />
                 </View>
             </Animated.View>}
             {!touch && <Animated.View style={[styles.nocturneSky, { transform: [{ translateY: starPosition }] }]}>
